@@ -4,18 +4,13 @@
   "version": "1.0.0",
   "description": "Personal knowledge base with Slidev presentations",
   "scripts": {
-    "dev": "slidev --open",
-    "build": "slidev build",
-    "export": "slidev export",
-    "deploy": "npm run build && gh-pages -d dist"
+    "dev": "npx slidev --open",
+    "build": "npx slidev build",
+    "export": "npx slidev export",
+    "deploy": "npx slidev build && npx gh-pages -d dist"
   },
   "dependencies": {
     "@slidev/cli": "^52.11.5",
-    "@slidev/theme-default": "^0.25.0",
-    "@slidev/theme-seriph": "^0.25.0",
     "gh-pages": "^6.1.1"
-  },
-  "devDependencies": {
-    "typescript": "^5.3.3"
   }
 }
