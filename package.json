@@ -1,0 +1,17 @@
+{
+  "name": "claw-knowledge-base",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export",
+    "screenshot": "slidev export --format png"
+  },
+  "dependencies": {
+    "@slidev/cli": "^0.49.7",
+    "@slidev/theme-default": "*",
+    "@slidev/theme-seriph": "*"
+  },
+  "packageManager": "pnpm@8.15.6"
+}
