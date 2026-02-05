@@ -11,3 +11,6 @@ npx slidev build knowledge/ai-applications-for-frontend-devs/slides.md --out=../
 
 # Build LLM Insights and Comparison presentation  
 npx slidev build knowledge/llm-insights-and-comparison/slides.md --out=../../dist/llm-insights-and-comparison  --base /claw/llm-insights-and-comparison
+
+# Build AI Skill Empowerment
+npx slidev build knowledge/ai-skill-empowerment/slides.md --out=../../dist/ai-skill-empowerment  --base /claw/ai-skill-empowerment
