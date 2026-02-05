@@ -6,4 +6,4 @@ set -e
 
 echo "Building Slidev presentation for GitHub Pages..."
 
-npx slidev build knowledge/ai-applications-for-frontend-devs/slides.md --out=../../dist/ai-applications-for-frontend-devs
+npx slidev build knowledge/ai-applications-for-frontend-devs/slides.md --out=../../dist/ai-applications-for-frontend-devs --base /claw/ai-applications-for-frontend-devs
