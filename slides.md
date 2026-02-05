@@ -1,5 +1,5 @@
 ---
-theme: seriph
+theme: default
 background: https://cover.sli.dev
 class: text-center
 highlighter: shiki
