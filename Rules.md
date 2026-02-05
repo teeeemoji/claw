@@ -6,6 +6,7 @@
 - 每个知识任务使用**单独文件夹**管理
 - 文件夹命名采用**小写中划线分割**格式（例如：`ai-applications`、`web-development-tutorial`）
 - 每个文件夹代表一个独立的知识主题或项目
+- **知识任务根目录**: 所有知识任务文件夹放在 `knowledge/` 目录下
 
 ### 2. Slidev 演示文稿规范
 - **根目录演示文稿**: `slides.md` + `package.json` 用于知识库整体介绍
@@ -68,13 +69,14 @@
 - **构建模式**: `npm run build` - 生成静态站点
 - **导出模式**: `npm run export` - 生成 PDF/PPTX
 
-### 2. 在线部署
-- **GitHub Pages**: 可直接部署到 GitHub Pages
-- **Vercel/Netlify**: 支持一键部署
-- **自托管**: 可部署到任何静态文件服务器
+### 2. GitHub Pages 自动部署
+- **构建脚本**: 使用 `scripts/build-pages.sh` 进行自动化构建
+- **构建命令**: `npx slidev build knowledge/{task-name}/slides.md --out=../../dist/{task-name}`
+- **输出目录**: 构建结果输出到 `dist/` 目录
+- **部署流程**: GitHub Actions 自动运行构建脚本并部署到 GitHub Pages
 
 ### 3. 分享方式
-- **在线链接**: 分享部署后的 URL
+- **在线链接**: 分享部署后的 URL (`https://teeeemoji.github.io/claw/`)
 - **PDF 下载**: 提供离线阅读版本
 - **源码访问**: 其他人可以克隆仓库并本地运行
 
@@ -94,6 +96,20 @@
 - **版本控制**: 所有内容都通过 Git 进行版本控制
 - **定期导出**: 重要演示文稿定期导出为 PDF
 - **多端同步**: 确保本地和远程仓库同步
+
+## 🛠️ 构建脚本规范
+
+### scripts/build-pages.sh 使用说明
+- **用途**: 专为 GitHub Pages 部署设计的构建脚本
+- **执行方式**: `./scripts/build-pages.sh`
+- **依赖**: 需要 Node.js 环境和网络连接
+- **输出**: 生成的静态文件位于 `dist/` 目录
+- **错误处理**: 脚本使用 `set -e` 确保任何错误都会停止执行
+
+### 自定义构建
+- **单个任务构建**: 可以修改脚本中的路径来构建特定知识任务
+- **批量构建**: 可以扩展脚本支持多个知识任务的批量构建
+- **本地测试**: 在推送前可以本地运行脚本来验证构建过程
 
 ---
 
