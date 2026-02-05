@@ -1,16 +1,20 @@
 {
   "name": "claw-knowledge-base",
   "private": true,
-  "type": "module",
+  "version": "1.0.0",
+  "description": "Personal knowledge base with Slidev presentations",
   "scripts": {
     "dev": "slidev --open",
     "build": "slidev build",
     "export": "slidev export",
-    "screenshot": "slidev export --format png"
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
-    "@slidev/cli": "^0.49.13",
-    "@slidev/theme-default": "*",
-    "@slidev/theme-seriph": "*"
+    "@slidev/cli": "^0.49.23",
+    "@slidev/theme-seriph": "^0.49.23",
+    "gh-pages": "^6.1.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
   }
 }

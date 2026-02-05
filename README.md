@@ -2,6 +2,10 @@
 
 个人知识整理中心，涵盖技术、学习、项目等各个领域的知识。
 
+## 🌐 在线演示
+
+**知识库演示文稿**: [https://teeeemoji.github.io/claw/](https://teeeemoji.github.io/claw/)
+
 ## 📚 知识库结构
 
 - **按主题分类**：每个知识领域使用独立文件夹
@@ -66,6 +70,14 @@ claw/
 - **Markdown**：文档格式
 - **Git**：版本控制
 - **GitHub**：代码托管
+- **GitHub Pages**：自动部署演示文稿
+
+## 🤖 自动化部署
+
+每次推送到 `main` 分支时，GitHub Actions 会自动：
+1. 安装依赖并构建 Slidev 演示文稿
+2. 部署到 GitHub Pages
+3. 更新在线演示链接
 
 ---
 
