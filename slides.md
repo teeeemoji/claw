@@ -1,204 +1,165 @@
 ---
 theme: seriph
-title: Claw 知识库使用指南
-background: '#f0f0f0'
-class: 'text-center'
+background: https://cover.sli.dev
+class: text-center
 highlighter: shiki
-lineNumbers: true
-monaco: true
-mdc: true
+lineNumbers: false
+info: |
+  Claw Knowledge Base Guide
+  A comprehensive guide to using this knowledge repository
+drawings:
+  persist: false
+transition: fade
+title: Claw Knowledge Base
 ---
 
-# Claw 知识库
+# Claw Knowledge Base
 
-## 个人知识管理的最佳实践
+Knowledge repository for personal learning and sharing
 
-<div class="abs-b-r m-4">
-  <span>teeeemoji</span>
+<div class="pt-12">
+  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
+    Press Space for next page <carbon:arrow-right class="inline"/>
+  </span>
 </div>
 
 ---
 
-## 目录
-
-<v-clicks>
-
-- 知识库架构
-- 贡献流程  
-- 技术栈介绍
-- 最佳实践
-- Q&A
-
-</v-clicks>
-
----
-
-## 知识库架构
+# Repository Structure
 
 ```tree
 claw/
 ├── README.md
 ├── Rules.md
-├── slides.md          <!-- 当前演示文稿 -->
-├── presentations/     <!-- 所有演示文稿 -->
-│   └── ai-applications-talk/
-├── ai-applications-for-frontend-devs/
-├── programming/
-├── devops/
-└── personal-notes/
+├── slides.md          # This presentation
+├── presentations/     # Knowledge presentations
+└── {knowledge-topic}/ # Individual knowledge tasks
 ```
 
 <v-click>
 
-每个知识领域都有独立的目录，便于组织和维护。
+## Knowledge Tasks
+- Each topic in separate directory
+- Lowercase kebab-case naming
+- Independent development branches
+
+</v-click>
+
+<v-click>
+
+## Presentations  
+- Slidev for knowledge sharing
+- Interactive demos and examples
+- Exportable to PDF/PPTX
 
 </v-click>
 
 ---
 
-## 贡献流程
+# Development Workflow
 
-### 1. 创建分支
-```bash
-git checkout -b knowledge/topic-name
-```
-
-### 2. 创建知识目录
-```bash
-mkdir topic-name-for-knowledge
-```
-
-### 3. 开发内容
-- 编写文档
-- 创建代码示例  
-- 添加演示文稿
-
-### 4. 提交评审
-```bash
-git add .
-git commit -m "Add knowledge about topic"
-git push origin knowledge/topic-name
+```mermaid
+graph LR
+    A[New Knowledge Task] --> B{Create Branch}
+    B --> C[Create Directory]
+    C --> D[Develop Content]
+    D --> E[Review & Test]
+    E --> F[Merge to Main]
 ```
 
 <v-click>
 
-**重要**: 每个知识任务必须在独立分支开发！
+## Branch Naming
+- `knowledge/task-name` for knowledge tasks
+- `presentation/topic-name` for presentations
+
+</v-click>
+
+<v-click>
+
+## Quality Requirements
+- Clear documentation
+- Working examples
+- Proper testing
 
 </v-click>
 
 ---
 
-## 技术栈
+# Slidev Integration
 
-### 核心工具
-- **Git**: 版本控制和协作
-- **Markdown**: 文档编写标准
-- **Slidev**: 演示文稿制作
+## Why Slidev?
+- Perfect for technical knowledge sharing
+- Code highlighting and live demos
+- Interactive presentations
+- Easy export to multiple formats
 
-### 开发环境
-- **Node.js**: 运行 Slidev 和其他工具
-- **VS Code**: 推荐编辑器（支持 Slidev 插件）
-- **Moltbot**: AI 助手，协助知识整理
+## Getting Started
+```bash
+# Install dependencies
+npm install
 
-### 自动化
-- **GitHub Actions**: CI/CD（可选）
-- **Prettier**: 代码格式化
-- **ESLint**: JavaScript 代码检查
+# Start development server  
+npm run dev
+
+# Build for production
+npm run build
+
+# Export to PDF
+npm run export
+```
 
 ---
 
-## Slidev 演示文稿规范
+# Knowledge Categories
 
-### 文件命名
-- 主演示文稿: `slides.md`
-- 子演示文稿: `presentations/topic/slides.md`
-
-### 目录结构
-```
-topic-name/
-├── README.md      # 知识概述
-├── index.md       # 学习路径索引  
-├── concepts.md    # 核心概念
-├── examples/      # 代码示例
-└── presentations/ # 演示文稿
-    └── slides.md
-```
-
-### 前端友好特性
 <v-clicks>
 
-- 实时预览（热重载）
-- 代码高亮和执行
-- 响应式设计
-- 导出 PDF/PPTX
-- GitHub Pages 部署
+- **AI/ML Applications** - Large model applications for frontend developers
+- **Web Development** - Modern web technologies and best practices  
+- **DevOps & Tools** - Development workflows and tooling
+- **Programming** - Language-specific knowledge and patterns
+- **Personal Notes** - Personal insights and learnings
 
 </v-clicks>
 
 ---
 
-## 最佳实践
+# Contribution Guidelines
 
-### 文档编写
-- 使用简洁明了的语言
-- 包含实际代码示例
-- 添加可视化图表
-- 保持一致性
+## For Knowledge Tasks
+1. Create new branch: `knowledge/your-topic`
+2. Create directory: `your-topic-name`
+3. Add comprehensive content with examples
+4. Submit for review
 
-### 代码示例
-- 可运行的完整示例
-- 适当的注释说明
-- 错误处理示例
-- 性能优化建议
-
-### 演示文稿
-- 重点突出关键概念
-- 使用动画逐步展示
-- 包含互动元素
-- 适配不同设备
+## For Presentations  
+1. Create new branch: `presentation/your-topic`
+2. Add slides to `slides.md` or create new presentation
+3. Include interactive demos where applicable
+4. Test export functionality
 
 ---
 
-## 开始你的第一个贡献
+# Resources
 
-### 步骤 1: 克隆仓库
-```bash
-git clone git@github.com:teeeemoji/claw.git
-cd claw
-```
+## Documentation
+- [Slidev Official Docs](https://sli.dev)
+- [Repository Rules](./Rules.md) 
+- [Knowledge Base Structure](./README.md)
 
-### 步骤 2: 安装依赖
-```bash
-npm install
-```
+## Tools
+- VS Code with Slidev extension
+- Browser development tools
+- Git for version control
 
-### 步骤 3: 启动演示文稿
-```bash
-npm run dev
-```
-
-### 步骤 4: 创建新知识
-```bash
-# 创建新分支
-git checkout -b knowledge/my-topic
-
-# 创建目录和内容
-mkdir my-topic-for-knowledge
-```
+## Support
+Contact the repository maintainer for questions or guidance
 
 ---
 
-# 谢谢！
+# Thank You!
 
-## 开始构建你的知识库吧 🚀
+Happy learning and sharing! 🎉
 
-<div class="grid grid-cols-2 gap-4 mt-10">
-  <div>
-    <h3>GitHub</h3>
-    <a href="https://github.com/teeeemoji/claw" target="_blank">github.com/teeeemoji/claw</a>
-  </div>
-  <div>
-    <h3>联系方式</h3>
-    <span>@teeeemoji</span>
-  </div>
-</div>
+[GitHub Repository](https://github.com/teeeemoji/claw)
