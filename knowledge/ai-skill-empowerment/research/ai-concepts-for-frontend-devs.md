@@ -1,255 +1,98 @@
-# AI 基础概念科普（前端开发者版）
+# AI 基础概念科普（前端开发者视角）
 
-## 🤖 大模型 (Large Language Models, LLMs)
+## 🧠 大模型 (Large Language Models) 是什么？
 
-### 什么是大模型？
-**类比**: 就像一个超级智能的 `JSON.parse()` + `JSON.stringify()` 组合体
+### 核心概念
+大模型就像一个超级智能的代码补全工具，但它能理解自然语言并生成连贯的文本。通过海量数据训练，它学会了预测下一个词，从而能够回答问题、写代码、创作内容。
 
-- **输入**: 你给它一段文本（prompt）
-- **处理**: 它在巨大的参数空间中进行模式匹配和预测
-- **输出**: 生成符合上下文的文本响应
-
-### 技术本质
-- **不是数据库查询**，而是**概率预测**
-- **不是规则引擎**，而是**统计模式识别**
-- **不是搜索引擎**，而是**内容生成器**
-
-### 前端类比
-```javascript
-// 传统方式：if-else 规则
-function respondToUser(input) {
-  if (input.includes('hello')) return 'Hi there!';
-  if (input.includes('help')) return 'How can I help?';
-}
-
-// 大模型方式：模式学习
-function llmRespond(input) {
-  // 基于海量数据学习到的模式
-  // 自动理解上下文、意图、情感
-  return generateResponse(input);
-}
-```
+### 为什么对前端开发者重要？
+- **智能助手**: 可以帮你写代码、解释技术概念、生成文档
+- **自动化工具**: 能够自动处理重复性任务
+- **创新加速**: 让你快速原型验证和迭代想法
 
 ## 🔍 RAG (Retrieval-Augmented Generation)
 
-### 什么是 RAG？
-**类比**: 给大模型配一个**实时数据库查询插件**
+### 类比理解
+RAG 就像你的 IDE 能自动查找项目文档并给出相关建议。它先检索相关知识，再用大模型生成答案，确保信息准确且及时。
 
-### 工作原理
-1. **检索阶段**: 用户提问 → 在知识库中搜索相关文档
-2. **增强阶段**: 将检索到的文档 + 用户问题一起给大模型
-3. **生成阶段**: 大模型基于真实信息生成答案
-
-### 前端类比
-```javascript
-// 传统 API 调用
-async function getAnswer(question) {
-  const response = await fetch('/api/answer', { 
-    method: 'POST', 
-    body: JSON.stringify({ question }) 
-  });
-  return response.json();
-}
-
-// RAG 方式
-async function ragAnswer(question) {
-  // 1. 检索相关文档
-  const relevantDocs = await searchKnowledgeBase(question);
-  
-  // 2. 增强 prompt
-  const enhancedPrompt = `
-    基于以下文档回答问题：
-    ${relevantDocs.join('\n')}
-    
-    问题：${question}
-  `;
-  
-  // 3. 调用大模型
-  return await callLLM(enhancedPrompt);
-}
+### 工作流程
+```
+用户问题 → 检索相关文档 → 大模型生成答案 → 返回结果
 ```
 
-### 为什么需要 RAG？
-- **解决幻觉问题**: 大模型不会编造不存在的信息
-- **实时性**: 可以使用最新的知识库内容
-- **准确性**: 基于真实文档生成答案
+### 前端应用场景
+- **技术文档问答**: 基于你的项目文档回答问题
+- **代码库搜索**: 在代码库中查找相关实现
+- **知识库查询**: 基于团队知识库提供答案
 
 ## 🤖 Agent (AI Agent)
 
-### 什么是 Agent？
-**类比**: 一个会自动调用 API 的**智能前端控制器**
+### 类比理解  
+Agent 就像一个自动化脚本，但能自主决策和调用多个工具。它能够理解目标、规划步骤、执行任务、处理结果。
 
 ### 核心能力
-- **规划**: 分析用户目标，制定执行步骤
-- **工具调用**: 调用各种工具（API、函数、其他 Skill）
-- **记忆**: 记住对话历史和上下文
-- **反思**: 评估执行结果，调整策略
+- **目标理解**: 理解用户想要完成什么
+- **工具调用**: 调用各种工具和服务
+- **自主规划**: 制定执行计划
+- **结果整合**: 将多个工具的结果整合成最终答案
 
-### 前端类比
-```javascript
-// 传统前端应用
-class TodoApp {
-  async addTodo(text) {
-    await api.createTodo(text);
-    this.updateUI();
-  }
-}
-
-// AI Agent
-class AIAgent {
-  async handleGoal(goal) {
-    // 1. 规划步骤
-    const plan = await this.planSteps(goal);
-    
-    // 2. 执行工具调用
-    for (const step of plan.steps) {
-      const toolResult = await this.executeTool(step.tool, step.params);
-      this.memory.add(toolResult);
-    }
-    
-    // 3. 生成最终响应
-    return await this.generateResponse();
-  }
-}
-```
-
-### Agent vs 传统应用
-| 特性 | 传统应用 | AI Agent |
-|------|----------|----------|
-| **逻辑** | 预定义的 if-else | 动态规划和决策 |
-| **灵活性** | 固定功能 | 可组合、可扩展 |
-| **交互** | 表单/按钮 | 自然语言对话 |
-| **维护** | 代码修改 | 提示词优化 |
+### 前端应用场景
+- **自动化测试**: 自主编写和执行测试用例
+- **代码审查**: 自动分析代码质量并提供建议
+- **项目管理**: 自动跟踪任务进度和生成报告
 
 ## 🛠️ Skill (AI Skill)
 
-### 什么是 Skill？
-**类比**: **npm 包** + **CLI 工具** 的结合体
+### 类比理解
+Skill 就像 npm 包或 Vue 组件，封装特定功能供复用。每个 Skill 都是一个独立的功能单元，可以被 Agent 调用。
 
-### Skill 的特点
-- **单一职责**: 每个 Skill 解决一个特定问题
-- **可组合**: 多个 Skill 可以组合使用
-- **可复用**: 在不同场景下重复使用
-- **可发现**: 通过技能注册表找到合适的 Skill
+### 核心特点
+- **功能封装**: 将特定任务的逻辑封装成可调用的单元
+- **标准化接口**: 遵循统一的输入输出格式
+- **可组合性**: 多个 Skill 可以组合完成复杂任务
+- **可复用性**: 一次开发，多次使用
 
-### 前端开发者的 Skill
-```bash
-# 传统方式：写完整应用
-npm create vue-app my-todo-app
+### 前端应用场景
+- **代码生成**: 自动生成组件、工具函数等
+- **文档生成**: 自动生成 API 文档、README 等
+- **部署脚本**: 自动化部署和发布流程
+- **监控告警**: 自动监控应用状态并发送告警
 
-# Skill 方式：直接使用现成的 Skill
-molt skill run todo-manager --action=create --text="Buy milk"
-```
+## 📡 MCP (Model Context Protocol)
 
-### Skill 的组成部分
-1. **SKILL.md**: 描述文件（类似 package.json 的 description）
-2. **脚本**: 实际执行逻辑（类似 bin scripts）
-3. **模板**: 输出格式模板（类似组件模板）
-4. **配置**: 参数和选项（类似组件 props）
+### 类比理解
+MCP 就像 REST API 或 GraphQL，定义了模型与工具的通信协议。它标准化了大模型如何调用外部工具和服务。
 
-## 🔌 MCP (Model Context Protocol)
+### 核心作用
+- **标准化通信**: 定义统一的工具调用接口
+- **工具发现**: 让模型知道有哪些工具可用
+- **参数传递**: 标准化参数传递和结果返回
+- **错误处理**: 统一的错误处理机制
 
-### 什么是 MCP？
-**类比**: **GraphQL** + **REST API** 的混合体，专门为 AI 设计
+### 前端应用场景
+- **API 集成**: 标准化调用后端 API
+- **工具链集成**: 集成各种开发工具
+- **服务编排**: 编排多个微服务的调用
 
-### MCP 的作用
-- **标准化工具调用**: 统一的接口规范
-- **上下文管理**: 管理工具调用的上下文
-- **安全控制**: 控制哪些工具可以被调用
-- **元数据描述**: 描述工具的能力和参数
+## 🌍 主流大模型概览
 
-### 前端类比
-```javascript
-// REST API
-GET /users/123
-POST /todos { text: "Buy milk" }
+详细的大模型介绍请参考 [major-llms-overview.md](./major-llms-overview.md)
 
-// GraphQL
-query { user(id: 123) { name, email } }
-mutation { createTodo(text: "Buy milk") { id } }
+## 💻 编码 Agent 工具
 
-// MCP (概念类似)
-{
-  "tool": "create_todo",
-  "params": { "text": "Buy milk" },
-  "context": { "user_id": 123 }
-}
-```
+详细的编码 Agent 工具介绍请参考 [coding-agent-tools.md](./coding-agent-tools.md)
 
-### MCP 的优势
-- **发现性**: Agent 可以自动发现可用的工具
-- **类型安全**: 工具参数有明确的类型定义
-- **组合性**: 工具可以组合使用
-- **监控**: 可以跟踪工具调用和使用情况
+## 🔌 MCP 工具生态
 
-## 🧩 这些概念如何协同工作？
+详细的 MCP 工具介绍请参考 [mcp-tools-overview.md](./mcp-tools-overview.md)
 
-### 典型工作流
-```
-用户目标 → Agent 规划 → 调用 Skill → Skill 使用 RAG → 调用大模型 → 返回结果
-```
+## 🎯 总结
 
-### 前端开发者视角
-1. **大模型**: 你的智能后端服务
-2. **RAG**: 你的实时数据查询层  
-3. **Agent**: 你的智能路由控制器
-4. **Skill**: 你的可复用业务组件
-5. **MCP**: 你的标准化 API 协议
+AI 技术不是要替代前端开发者，而是要**放大你的能力**：
+- **大模型** = 你的智能助手
+- **RAG** = 你的知识检索器  
+- **Agent** = 你的自动化脚本
+- **Skill** = 你的可复用组件
+- **MCP** = 你的标准化接口
 
-### 实际应用场景
-**场景**: "帮我分析这个 GitHub 仓库的代码质量"
-
-1. **Agent** 接收到目标，规划步骤：
-   - 克隆仓库
-   - 运行代码分析工具
-   - 生成报告
-
-2. **调用 Skill**:
-   - `github-repo-analyzer` Skill
-   - `code-quality-reporter` Skill
-
-3. **Skill 内部使用 RAG**:
-   - 查询代码质量最佳实践文档
-   - 基于最新标准生成分析报告
-
-4. **大模型** 生成最终的自然语言报告
-
-## 💡 为什么前端开发者应该关注这些？
-
-### 1. **角色转变**
-- **从前**: UI 层开发者
-- **现在**: AI 应用架构师 + 体验设计师
-
-### 2. **技能升级**
-- **HTML/CSS/JS** → **Prompt Engineering + Skill Development**
-- **React/Vue** → **Agent Orchestration + Tool Integration**
-
-### 3. **价值提升**
-- **重复性工作** → **创造性工作**
-- **功能实现** → **智能体验设计**
-
-### 4. **未来趋势**
-- **Web 应用** → **AI-Native 应用**
-- **用户界面** → **对话界面 + 智能代理**
-
-## 🚀 开始你的 AI 开发之旅
-
-### 第一步：理解概念
-- 大模型 = 智能后端
-- RAG = 实时数据层  
-- Agent = 智能控制器
-- Skill = 可复用组件
-- MCP = 标准化协议
-
-### 第二步：动手实践
-- 创建你的第一个 Skill
-- 体验 RAG 的威力
-- 构建简单的 Agent
-- 参与 MCP 生态
-
-### 第三步：深度集成
-- 将 AI 能力融入现有应用
-- 构建团队的 Skill 库
-- 设计 AI-Native 用户体验
-
-记住：**你不是在被 AI 替代，而是在成为 AI 的指挥官！**
+掌握这些概念，你就能更好地利用 AI 技术来提升开发效率和创新能力！
